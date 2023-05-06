@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from phones.models import Phone
+from .models import Phone
 
 
 def index(request):
