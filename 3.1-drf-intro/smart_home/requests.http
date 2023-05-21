@@ -13,7 +13,7 @@ POST {{baseUrl}}/sensors/
 Content-Type: application/json
 
 {
-  "name": "ESP32",
+  "name": "ESP31",
   "description": "Датчик на кухне за холодильником"
 }
 
@@ -34,8 +34,8 @@ POST {{baseUrl}}/measurements/
 Content-Type: application/json
 
 {
-  "sensor": 1,
-  "temperature": 24.3
+  "sensor": 3,
+  "temperature": 40.3
 }
 
 ###
@@ -43,3 +43,23 @@ Content-Type: application/json
 # получение информации по датчику
 GET {{baseUrl}}/sensors/1/
 Content-Type: application/json
+
+###
+
+# вывести список измерений
+GET {{baseUrl}}/measurements/?sensor=<pk>
+Content-Type: application/json
+
+###
+
+# добавление измерения с изображением
+POST {{baseUrl}}/measurements/
+Content-Type: application/json
+
+{
+  "sensor": 3,
+  "temperature": 40.3,
+  "image_url": "https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2018/02/13180950/5762835.jpg"
+}
+
+
