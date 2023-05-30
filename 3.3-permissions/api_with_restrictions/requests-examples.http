@@ -11,7 +11,7 @@ Content-Type: application/json
 # создание объявления
 POST {{baseUrl}}/advertisements/
 Content-Type: application/json
-Authorization: Token a4d7d49673eb6a06fc512535c4908bef83f929d3
+Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
 
 {
   "title": "Шкаф IKEA",
@@ -21,12 +21,12 @@ Authorization: Token a4d7d49673eb6a06fc512535c4908bef83f929d3
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/4/
+PATCH {{baseUrl}}/advertisements/5/
 Content-Type: application/json
 Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
 
 {
-  "status": "CLOSED"
+  "status": "OPEN"
 }
 
 ###
