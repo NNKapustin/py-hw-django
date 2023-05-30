@@ -47,4 +47,24 @@ Content-Type: application/json
 GET {{baseUrl}}/advertisements/?created_at_after=2023-05-27
 Content-Type: application/json
 
+###
+
+# создание черновика
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
+
+{
+  "title": "Шкаф IKEA",
+  "description": "Срочно",
+  "status": "DRAFT"
+}
+
+###
+
+
+# получение объявлений с токеном
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
 

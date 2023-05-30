@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from advertisements.models import Advertisement
+from advertisements.models import Advertisement, Favorite
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -48,3 +48,11 @@ class AdvertisementSerializer(serializers.ModelSerializer):
                 raise ValidationError('User cannot have more than 10 advertisements.')
             
         return data
+    
+class FavoriteSerializer(serializers.ModelSerializer):
+
+    advertisement = AdvertisementSerializer()
+
+    class Meta:
+        model = Favorite
+        fields = ('user', 'advertisement',)
