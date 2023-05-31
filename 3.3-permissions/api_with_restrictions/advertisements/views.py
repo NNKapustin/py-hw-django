@@ -21,6 +21,8 @@ class AdvertisementViewSet(ModelViewSet):
         """Получение прав для действий."""
         if self.action in ["create", "update", "partial_update", "destroy"]:
             return [IsAuthenticated(), IsOwnerOrReadOnly()]
+        elif self.action in ['add_to_favorites', 'my_favorites']:
+            return [IsAuthenticated()]
         return []
     
     def get_queryset(self):
@@ -28,7 +30,7 @@ class AdvertisementViewSet(ModelViewSet):
         if not self.request.user.is_authenticated:
             queryset = queryset.exclude(status=AdvertisementStatusChoices.DRAFT)
         else:
-            queryset = queryset.filter(creator=self.request.user)
+            queryset = queryset.filter(creator=self.request.user) | queryset.exclude(status='DRAFT')
         return queryset
     
     @action(detail=True, methods=['post'])

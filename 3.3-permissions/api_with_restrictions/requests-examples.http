@@ -21,7 +21,7 @@ Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/5/
+PATCH {{baseUrl}}/advertisements/1/
 Content-Type: application/json
 Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
 
@@ -60,11 +60,4 @@ Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
   "status": "DRAFT"
 }
 
-###
-
-
-# получение объявлений с токеном
-GET {{baseUrl}}/advertisements/
-Content-Type: application/json
-Authorization: Token 4d6455a1a92784e7502214fa9a4fb935b1de3cec
 
