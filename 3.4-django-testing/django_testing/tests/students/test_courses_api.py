@@ -27,8 +27,8 @@ def student_factory():
 
 @pytest.mark.django_db
 def test_get_first_course(api_client, course_factory):
-    course_factory(_quantity=1)
-    response = api_client.get('/api/v1/courses/1/')
+    course = course_factory(_quantity=1)
+    response = api_client.get(f'/api/v1/courses/{course[0].id}/')
     assert response.status_code == 200
     data = response.json()
     assert data['id'] == 1
@@ -47,8 +47,9 @@ def test_get_courses_list(api_client, course_factory):
 
 @pytest.mark.django_db
 def test_get_course_filter_id(api_client, course_factory):
-    course_factory(_quantity=10)
-    response = api_client.get('/api/v1/courses/?id=3')
+    courses = course_factory(_quantity=10)
+    # response = api_client.get(f'/api/v1/courses/?id={courses[2].id}')
+    response = api_client.get('/api/v1/courses/', {'id': courses[2].id})
     assert response.status_code == 200
     data = response.json()
     assert data[0]['id'] == 3
@@ -57,7 +58,8 @@ def test_get_course_filter_id(api_client, course_factory):
 @pytest.mark.django_db
 def test_get_course_filter_id(api_client, course_factory):
     courses = course_factory(_quantity=10)
-    response = api_client.get(f'/api/v1/courses/?name={courses[1].name}')
+    # response = api_client.get(f'/api/v1/courses/?name={courses[1].name}')
+    response = api_client.get('/api/v1/courses/', {'name': courses[1].name})
     assert response.status_code == 200
     data = response.json()
     assert data[0]['name'] == courses[1].name
