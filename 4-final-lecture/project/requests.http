@@ -1,0 +1,54 @@
+
+# get all posts
+GET http://localhost:8000/api/posts/
+Authorization: Token bf347ba81972671ee44cb4c4d52a219bc766787c
+
+
+###
+
+# create post
+POST http://localhost:8000/api/posts/
+Content-Type: application/json
+Authorization: Token bf347ba81972671ee44cb4c4d52a219bc766787c
+
+{
+    "text": "Hello from api"
+}
+
+###
+
+# change post
+PATCH http://localhost:8000/api/posts/1/
+Content-Type: application/json
+Authorization: Token bf347ba81972671ee44cb4c4d52a219bc766787c
+
+{
+    "text": "New text"
+}
+
+###
+
+# get exact post
+GET http://localhost:8000/api/posts/1/
+
+###
+
+# add to favorite
+POST http://localhost:8000/api/posts/1/add-to-favorite/
+Content-Type: application/json
+Authorization: Token bf347ba81972671ee44cb4c4d52a219bc766787c
+
+###
+
+# remove from favorite
+POST http://localhost:8000/api/posts/1/remove-from-favorite/
+Content-Type: application/json
+Authorization: Token bf347ba81972671ee44cb4c4d52a219bc766787c
+
+###
+
+# toggle favorite
+POST http://localhost:8000/api/posts/1/toggle-favorite/
+Content-Type: application/json
+Authorization: Token bf347ba81972671ee44cb4c4d52a219bc766787c
+
